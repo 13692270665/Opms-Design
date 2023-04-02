@@ -19,7 +19,6 @@ public class GlobalExceptionHandler {
     public R error(Exception e) {
         log.error("执行了全局异常处理");
         e.printStackTrace();
-        System.out.println("555");
         return R.error().message("执行了全局异常处理..");
     }
 
