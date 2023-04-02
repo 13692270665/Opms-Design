@@ -7,7 +7,6 @@ import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
 /**
- *
  * @Author ccd
  * @Date 2023/3/2 23:37
  */
