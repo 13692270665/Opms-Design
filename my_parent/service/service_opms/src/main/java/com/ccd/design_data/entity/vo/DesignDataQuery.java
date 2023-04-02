@@ -1,7 +1,4 @@
-package com.ccd.design_data.entity.vo;/**
- * @author :ccd
- * @date : 2023/3/2 23:37
- */
+package com.ccd.design_data.entity.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
