@@ -2,6 +2,7 @@ package com.ccd.opms.service.impl;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ccd.opms.entity.User;
+import com.ccd.opms.entity.vo.RegisterVo;
 import com.ccd.opms.mapper.UserMapper;
 import com.ccd.opms.service.UserService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
@@ -45,5 +46,38 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         //登陆成功,生成token
         String token = JwtUtils.getJwtToken(moblieUser.getId(), moblieUser.getUsername());
         return token;
+    }
+
+    @Override
+    public void register(RegisterVo registerVo) {
+        //获取注册数据
+        String code = registerVo.getCode();
+        String mobile = registerVo.getMobile();
+        String username = registerVo.getUsername();
+        String password = registerVo.getPassword();
+        //非空判断
+        if (StringUtils.isEmpty(mobile) || StringUtils.isEmpty(password)
+                || StringUtils.isEmpty(code) || StringUtils.isEmpty(username)) {
+            throw new CcdException(20001, "注册信息不完整，注册失败");
+        }
+        //判断验证码
+//        String redisCode = redisTemplate.opsForValue().get(mobile);
+//        if (!redisCode.equals(code)) {
+//            throw new CcdException(20001, "验证码错误，注册失败");
+//        }
+        //判断手机号是否重复
+        QueryWrapper<User> wrapper = new QueryWrapper<>();
+        wrapper.eq("mobile", mobile);
+        Integer count = baseMapper.selectCount(wrapper);
+        if (count > 0) {
+            throw new CcdException(20001, "该手机已注册，注册失败");
+        }
+        //添加到数据库
+        User user = new User();
+        user.setMobile(mobile);
+        user.setUsername(username);
+        user.setPassword(MD5.encrypt(password));
+        user.setAvatar("http://t15.baidu.com/it/u=736139517,3841551240&fm=224&app=112&f=JPEG?w=500&h=500");
+        baseMapper.insert(user);
     }
 }

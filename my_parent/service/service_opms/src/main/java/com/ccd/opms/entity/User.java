@@ -32,7 +32,7 @@ public class User extends BaseEntity {
     @TableId(value = "id", type = IdType.ID_WORKER_STR)
     private String id;
 
-    @ApiModelProperty(value = "昵称")
+    @ApiModelProperty(value = "用户名")
     private String username;
 
     @ApiModelProperty(value = "手机号")
