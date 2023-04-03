@@ -1,11 +1,10 @@
-package com.ccd.design_data.entity;
+package com.ccd.opms.entity;
 
 import com.baomidou.mybatisplus.annotation.*;
 
-import java.util.Date;
-
 import java.io.Serializable;
 
+import com.ccd.service_use.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
@@ -24,7 +23,7 @@ import lombok.experimental.Accessors;
 @EqualsAndHashCode(callSuper = false)
 @Accessors(chain = true)
 @ApiModel(value="OpmsDesignData对象", description="设计资料表")
-public class OpmsDesignData implements Serializable {
+public class OpmsDesignData extends BaseEntity {
 
     private static final long serialVersionUID = 1L;
 
@@ -76,14 +75,6 @@ public class OpmsDesignData implements Serializable {
 
     @ApiModelProperty(value = "原始资料文件")
     private String originalFilePath;
-
-    @ApiModelProperty(value = "创建时间")
-    @TableField(fill = FieldFill.INSERT)
-    private Date createTime;
-
-    @ApiModelProperty(value = "更新时间")
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private Date updateTime;
 
     @ApiModelProperty(value = "备注")
     private String remark;

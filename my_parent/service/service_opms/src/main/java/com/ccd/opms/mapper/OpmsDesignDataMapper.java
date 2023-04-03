@@ -1,6 +1,6 @@
-package com.ccd.design_data.mapper;
+package com.ccd.opms.mapper;
 
-import com.ccd.design_data.entity.OpmsDesignData;
+import com.ccd.opms.entity.OpmsDesignData;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**

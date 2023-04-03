@@ -1,6 +1,6 @@
-package com.ccd.design_data.service;
+package com.ccd.opms.service;
 
-import com.ccd.design_data.entity.OpmsDesignData;
+import com.ccd.opms.entity.OpmsDesignData;
 import com.baomidou.mybatisplus.extension.service.IService;
 
 /**

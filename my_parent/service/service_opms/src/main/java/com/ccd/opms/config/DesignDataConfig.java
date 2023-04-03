@@ -1,4 +1,4 @@
-package com.ccd.design_data.config;
+package com.ccd.opms.config;
 
 import com.baomidou.mybatisplus.core.injector.ISqlInjector;
 import com.baomidou.mybatisplus.extension.injector.LogicSqlInjector;
@@ -12,7 +12,7 @@ import org.springframework.context.annotation.Configuration;
  * @date : 2023/2/23 20:14 
  */
 @Configuration
-@MapperScan("com.ccd.design_data.mapper")
+@MapperScan("com.ccd.opms.mapper")
 public class DesignDataConfig {
 
     //逻辑删除插件

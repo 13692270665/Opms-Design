@@ -1,8 +1,8 @@
-package com.ccd.design_data.service.impl;
+package com.ccd.opms.service.impl;
 
-import com.ccd.design_data.entity.OpmsDesignData;
-import com.ccd.design_data.mapper.OpmsDesignDataMapper;
-import com.ccd.design_data.service.OpmsDesignDataService;
+import com.ccd.opms.entity.OpmsDesignData;
+import com.ccd.opms.mapper.OpmsDesignDataMapper;
+import com.ccd.opms.service.OpmsDesignDataService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import org.springframework.stereotype.Service;
 

@@ -1,4 +1,4 @@
-package com.ccd.design_data.entity.vo;
+package com.ccd.opms.entity.vo;
 
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;

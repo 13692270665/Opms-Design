@@ -1,10 +1,10 @@
-package com.ccd.design_data.controller;
+package com.ccd.opms.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ccd.design_data.entity.OpmsDesignData;
-import com.ccd.design_data.entity.vo.DesignDataQuery;
-import com.ccd.design_data.service.OpmsDesignDataService;
+import com.ccd.opms.entity.OpmsDesignData;
+import com.ccd.opms.entity.vo.DesignDataQuery;
+import com.ccd.opms.service.OpmsDesignDataService;
 import com.ccd.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
