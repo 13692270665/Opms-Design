@@ -77,23 +77,9 @@ public class OpmsDesignData implements Serializable {
     @ApiModelProperty(value = "原始资料文件")
     private String originalFilePath;
 
-    @ApiModelProperty(value = "CAD文件")
-    private String cadFilePath;
-
-    @ApiModelProperty(value = "3D文件")
-    private String cadFilePath_3d;
-
-    @ApiModelProperty(value = "创建人")
-    @TableField(fill = FieldFill.INSERT)
-    private String createBy;
-
     @ApiModelProperty(value = "创建时间")
     @TableField(fill = FieldFill.INSERT)
     private Date createTime;
-
-    @ApiModelProperty(value = "更新人")
-    @TableField(fill = FieldFill.INSERT_UPDATE)
-    private String updateBy;
 
     @ApiModelProperty(value = "更新时间")
     @TableField(fill = FieldFill.INSERT_UPDATE)
