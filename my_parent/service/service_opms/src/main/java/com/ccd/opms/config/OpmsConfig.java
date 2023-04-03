@@ -13,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
  */
 @Configuration
 @MapperScan("com.ccd.opms.mapper")
-public class DesignDataConfig {
+public class OpmsConfig {
 
     //逻辑删除插件
     @Bean

@@ -20,9 +20,10 @@ import org.springframework.web.bind.annotation.*;
  * @author CCD
  * @since 2023-02-22
  */
+@CrossOrigin
 @Api(tags = "光学零件管理-设计资料")
 @RestController
-@RequestMapping("/design_data/opms-design-data")
+@RequestMapping("/opms/design_data")
 public class OpmsDesignDataController {
 
     @Autowired

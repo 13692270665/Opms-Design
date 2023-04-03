@@ -50,7 +50,7 @@ public class CodeGenerator {
         // 4、包配置
         PackageConfig pc = new PackageConfig();
         pc.setParent("com.ccd");
-        pc.setModuleName("login");
+        pc.setModuleName("opms");
         //子包
         pc.setController("controller");
         pc.setEntity("entity");
