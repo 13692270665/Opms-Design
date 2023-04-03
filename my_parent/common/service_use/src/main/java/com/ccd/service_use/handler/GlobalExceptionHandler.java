@@ -3,6 +3,7 @@ package com.ccd.service_use.handler;
 import com.ccd.utils.R;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.ExceptionHandler;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
 /**
@@ -28,6 +29,14 @@ public class GlobalExceptionHandler {
         log.error("执行了ArithmeticException异常处理");
         e.printStackTrace();
         return R.error().message("执行了ArithmeticException异常处理..");
+    }
+
+    //自定义异常
+    @ExceptionHandler(CcdException.class)
+    @ResponseBody //为了返回数据
+    public R error(CcdException e) {
+        e.printStackTrace();
+        return R.error().code(e.getCode()).message(e.getMsg());
     }
 
 }
