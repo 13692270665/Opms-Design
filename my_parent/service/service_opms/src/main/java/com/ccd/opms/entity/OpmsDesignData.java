@@ -40,6 +40,9 @@ public class OpmsDesignData extends BaseEntity {
     @ApiModelProperty(value = "零件编号")
     private String partsId;
 
+    @ApiModelProperty(value = "零件类型")
+    private String partsType;
+
     @ApiModelProperty(value = "零件名称")
     private String partsName;
 
@@ -78,9 +81,6 @@ public class OpmsDesignData extends BaseEntity {
 
     @ApiModelProperty(value = "备注")
     private String remark;
-
-    @ApiModelProperty(value = "模板类型")
-    private String templateType;
 
     @ApiModelProperty(value = "透镜左面")
     private String lensLeft;
