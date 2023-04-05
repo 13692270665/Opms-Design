@@ -76,9 +76,6 @@ public class OpmsDesignData extends BaseEntity {
     @ApiModelProperty(value = "对技术的要求")
     private String technicalRequirements;
 
-    @ApiModelProperty(value = "原始资料文件")
-    private String originalFilePath;
-
     @ApiModelProperty(value = "备注")
     private String remark;
 
