@@ -13,6 +13,9 @@ public class DesignDataQuery {
     @ApiModelProperty(value = "零件名称")
     private String partsName;
 
+    @ApiModelProperty(value = "零件类型")
+    private String partsType;
+
     @ApiModelProperty(value = "创建人")
     private String createBy;
 

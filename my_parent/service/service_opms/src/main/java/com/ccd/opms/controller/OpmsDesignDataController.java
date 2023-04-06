@@ -12,6 +12,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 /**
  * <p>
  * 设计资料表 前端控制器
@@ -29,26 +31,10 @@ public class OpmsDesignDataController {
     @Autowired
     private OpmsDesignDataService designDataService;
 
-    @ApiOperation("查询所有设计资料")
-    @GetMapping("findAll")
-    public R findAll() {
-        return R.ok().data("items", designDataService.list(null));
-    }
-
     @ApiOperation("逻辑删除设计资料")
     @DeleteMapping("{designDataId}")
     public R removeDesignData(@PathVariable Long designDataId) {
         return designDataService.removeById(designDataId) ? R.ok() : R.error();
-    }
-
-    @ApiOperation("分页查询设计资料")
-    @GetMapping("pageDesignData/{current}/{limit}")
-    public R pageListDesignData(@PathVariable Long current, @PathVariable Long limit) {
-        //创建分页对象
-        Page<OpmsDesignData> MyPage = new Page<>(current, limit);
-        //调用方法实现分页
-        designDataService.page(MyPage, null);
-        return R.ok().data("page", MyPage);
     }
 
     @ApiOperation("条件查询设计资料带分页")
@@ -77,7 +63,9 @@ public class OpmsDesignDataController {
         }
         //调用方法实现条件查询分页，并返回数据
         designDataService.page(MyPage, wrapper);
-        return R.ok().data("page", MyPage);
+        List<OpmsDesignData> records = MyPage.getRecords();
+        long total = MyPage.getTotal();
+        return R.ok().data("total",total).data("rows",records);
     }
 
     @ApiOperation("新增设计资料")

@@ -85,5 +85,7 @@ public class OpmsDesignData extends BaseEntity {
     @ApiModelProperty(value = "透镜右面")
     private String lensRight;
 
+    @ApiModelProperty(value = "创建人")
+    private String createBy;
 
 }
