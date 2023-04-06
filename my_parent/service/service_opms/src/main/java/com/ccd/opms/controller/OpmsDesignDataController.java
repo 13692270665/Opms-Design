@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -32,9 +33,9 @@ public class OpmsDesignDataController {
     private OpmsDesignDataService designDataService;
 
     @ApiOperation("逻辑删除设计资料")
-    @DeleteMapping("{designDataId}")
-    public R removeDesignData(@PathVariable Long designDataId) {
-        return designDataService.removeById(designDataId) ? R.ok() : R.error();
+    @DeleteMapping("removeDesignData/{designDataId}")
+    public R removeDesignData(@PathVariable Collection<Long> designDataId) {
+        return designDataService.removeByIds(designDataId) ? R.ok() : R.error();
     }
 
     @ApiOperation("条件查询设计资料带分页")
