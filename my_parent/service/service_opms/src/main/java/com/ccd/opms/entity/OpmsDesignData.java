@@ -64,18 +64,6 @@ public class OpmsDesignData extends BaseEntity {
     @ApiModelProperty(value = "重量")
     private String weight;
 
-    @ApiModelProperty(value = "对材料的要求")
-    private String materialRequirements;
-
-    @ApiModelProperty(value = "对零件的要求")
-    private String partsRequired;
-
-    @ApiModelProperty(value = "设计图的参数")
-    private String designParameters;
-
-    @ApiModelProperty(value = "对技术的要求")
-    private String technicalRequirements;
-
     @ApiModelProperty(value = "备注")
     private String remark;
 

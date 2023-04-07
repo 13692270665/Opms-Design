@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
 
@@ -31,12 +32,6 @@ public class OpmsDesignDataController {
 
     @Autowired
     private OpmsDesignDataService designDataService;
-
-    @ApiOperation("逻辑删除设计资料")
-    @DeleteMapping("removeDesignData/{designDataId}")
-    public R removeDesignData(@PathVariable Collection<Long> designDataId) {
-        return designDataService.removeByIds(designDataId) ? R.ok() : R.error();
-    }
 
     @ApiOperation("条件查询设计资料带分页")
     @PostMapping("pageDesignDataCondition/{current}/{limit}")
@@ -62,11 +57,18 @@ public class OpmsDesignDataController {
         if (!StringUtils.isEmpty(end)) {
             wrapper.le("create_time", end);
         }
+        wrapper.orderByDesc("create_time");
         //调用方法实现条件查询分页，并返回数据
         designDataService.page(MyPage, wrapper);
         List<OpmsDesignData> records = MyPage.getRecords();
         long total = MyPage.getTotal();
         return R.ok().data("total",total).data("rows",records);
+    }
+
+    @ApiOperation("逻辑删除设计资料")
+    @DeleteMapping("removeDesignData/{designDataId}")
+    public R removeDesignData(@PathVariable Collection<Serializable> designDataId) {
+        return designDataService.removeByIds(designDataId) ? R.ok() : R.error();
     }
 
     @ApiOperation("新增设计资料")
@@ -76,8 +78,8 @@ public class OpmsDesignDataController {
     }
 
     @ApiOperation(value = "根据设计资料id进行查询")
-    @GetMapping("getDesignDateById/{id}")
-    public R getDesignDateById(@PathVariable String id) {
+    @GetMapping("{id}")
+    public R getDesignDateById(@PathVariable Long id) {
         return R.ok().data("DesignData",designDataService.getById(id));
     }
 
