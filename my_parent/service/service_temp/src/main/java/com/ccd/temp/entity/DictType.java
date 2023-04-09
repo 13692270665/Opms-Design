@@ -30,7 +30,7 @@ public class DictType extends BaseEntity {
     private static final long serialVersionUID = 1L;
 
     @ApiModelProperty(value = "字典主键")
-    @TableId(value = "dict_id", type = IdType.ID_WORKER_STR)
+    @TableId(value = "dict_id", type = IdType.AUTO)
     private Long dictId;
 
     @ApiModelProperty(value = "字典名称")

@@ -66,27 +66,27 @@ public class DictTypeController {
     }
 
     @ApiOperation("删除字典类型")
-    @DeleteMapping("delete/{designDataId}")
-    public R remove(@PathVariable Collection<Serializable> designDataId) {
-        return dictTypeService.removeByIds(designDataId) ? R.ok() : R.error();
+    @DeleteMapping("delete/{dictTypeId}")
+    public R remove(@PathVariable Collection<Serializable> dictTypeId) {
+        return dictTypeService.removeByIds(dictTypeId) ? R.ok() : R.error();
     }
 
     @ApiOperation("新增字典类型")
     @PostMapping("add")
-    public R add(@RequestBody DictType designData) {
-        return dictTypeService.save(designData) ? R.ok() : R.error();
+    public R add(@RequestBody DictType dictType) {
+        return dictTypeService.save(dictType) ? R.ok() : R.error();
     }
 
     @ApiOperation(value = "根据字典类型id查询")
     @GetMapping("{id}")
     public R getById(@PathVariable Long id) {
-        return R.ok().data("DesignData",dictTypeService.getById(id));
+        return R.ok().data("dictType",dictTypeService.getById(id));
     }
 
     @ApiOperation("修改字典类型")
-    @PostMapping("updateDesignData")
-    public R update(@RequestBody DictType designData) {
-        return dictTypeService.updateById(designData)? R.ok(): R.error();
+    @PostMapping("update")
+    public R update(@RequestBody DictType dictType) {
+        return dictTypeService.updateById(dictType)? R.ok(): R.error();
     }
 
 }
