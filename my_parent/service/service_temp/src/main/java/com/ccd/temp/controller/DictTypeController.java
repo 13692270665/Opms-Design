@@ -3,8 +3,10 @@ package com.ccd.temp.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ccd.temp.entity.DictData;
 import com.ccd.temp.entity.DictType;
 import com.ccd.temp.entity.Vo.TempQuery;
+import com.ccd.temp.service.DictDataService;
 import com.ccd.temp.service.DictTypeService;
 import com.ccd.utils.R;
 import io.swagger.annotations.Api;
@@ -33,11 +35,13 @@ public class DictTypeController {
 
     @Autowired
     private DictTypeService dictTypeService;
+    @Autowired
+    private DictDataService dictDataService;
 
     @ApiOperation("获取所有字典类型")
     @PostMapping("getAllDataType")
-    public R getAllDataType(){
-        return R.ok().data("dataTypeList",dictTypeService.list(null));
+    public R getAllDataType() {
+        return R.ok().data("dataTypeList", dictTypeService.list(null));
     }
 
     @ApiOperation("条件查询字典类型带分页")
@@ -68,13 +72,18 @@ public class DictTypeController {
         dictTypeService.page(MyPage, wrapper);
         List<DictType> records = MyPage.getRecords();
         long total = MyPage.getTotal();
-        return R.ok().data("total",total).data("rows",records);
+        return R.ok().data("total", total).data("rows", records);
     }
 
     @ApiOperation("删除字典类型")
     @DeleteMapping("delete/{dictTypeId}")
-    public R remove(@PathVariable Collection<Serializable> dictTypeId) {
-        return dictTypeService.removeByIds(dictTypeId) ? R.ok() : R.error();
+    public R remove(@PathVariable Long dictTypeId) {
+        //获取类型
+        DictType dictType = dictTypeService.getById(dictTypeId);
+        QueryWrapper<DictData> dataWrapper = new QueryWrapper<>();
+        dataWrapper.eq("dict_type", dictType.getDictType());
+        dictDataService.remove(dataWrapper);
+        return dictTypeService.removeById(dictTypeId) ? R.ok() : R.error();
     }
 
     @ApiOperation("新增字典类型")
@@ -86,13 +95,13 @@ public class DictTypeController {
     @ApiOperation(value = "根据字典类型id查询")
     @GetMapping("{id}")
     public R getById(@PathVariable Long id) {
-        return R.ok().data("dictType",dictTypeService.getById(id));
+        return R.ok().data("dictType", dictTypeService.getById(id));
     }
 
     @ApiOperation("修改字典类型")
     @PostMapping("update")
     public R update(@RequestBody DictType dictType) {
-        return dictTypeService.updateById(dictType)? R.ok(): R.error();
+        return dictTypeService.updateById(dictType) ? R.ok() : R.error();
     }
 
 }
