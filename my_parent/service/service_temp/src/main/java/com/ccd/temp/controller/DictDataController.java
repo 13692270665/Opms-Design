@@ -52,6 +52,7 @@ public class DictDataController {
         if (!StringUtils.isEmpty(dictType)) {
             wrapper.eq("dict_type", dictType);
         }
+        wrapper.orderByAsc("dict_sort");
         //调用方法实现条件查询分页，并返回数据
         dictDataService.page(MyPage, wrapper);
         List<DictData> records = MyPage.getRecords();
@@ -59,7 +60,7 @@ public class DictDataController {
         return R.ok().data("total",total).data("rows",records);
     }
 
-    @ApiOperation("删除数据字典")
+    @ApiOperation("根据字典id删除数据字典")
     @DeleteMapping("delete/{dictDataId}")
     public R remove(@PathVariable Collection<Serializable> dictDataId) {
         return dictDataService.removeByIds(dictDataId) ? R.ok() : R.error();
@@ -71,12 +72,10 @@ public class DictDataController {
         return dictDataService.save(dictData) ? R.ok() : R.error();
     }
 
-    @ApiOperation(value = "根据字典类型查询数据字典")
-    @GetMapping("{dictType}")
-    public R getById(@PathVariable String dictType) {
-        QueryWrapper<DictData> wrapper = new QueryWrapper<>();
-        wrapper.eq("dict_type", dictType);
-        return R.ok().data("list",dictDataService.list(wrapper));
+    @ApiOperation(value = "根据字典类型id查询")
+    @GetMapping("getById/{id}")
+    public R getById(@PathVariable Long id) {
+        return R.ok().data("dictData",dictDataService.getById(id));
     }
 
     @ApiOperation("修改数据字典")

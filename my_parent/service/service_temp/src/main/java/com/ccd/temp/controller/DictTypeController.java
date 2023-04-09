@@ -35,7 +35,7 @@ public class DictTypeController {
     private DictTypeService dictTypeService;
 
     @ApiOperation("获取所有字典类型")
-    @PostMapping()
+    @PostMapping("getAllDataType")
     public R getAllDataType(){
         return R.ok().data("dataTypeList",dictTypeService.list(null));
     }
