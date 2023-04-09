@@ -34,6 +34,12 @@ public class DictTypeController {
     @Autowired
     private DictTypeService dictTypeService;
 
+    @ApiOperation("获取所有字典类型")
+    @PostMapping()
+    public R getAllDataType(){
+        return R.ok().data("dataTypeList",dictTypeService.list(null));
+    }
+
     @ApiOperation("条件查询字典类型带分页")
     @PostMapping("list/{current}/{limit}")
     public R list(@PathVariable Long current, @PathVariable Long limit,
