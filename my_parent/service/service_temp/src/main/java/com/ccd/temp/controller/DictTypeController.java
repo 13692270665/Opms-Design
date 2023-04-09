@@ -36,8 +36,8 @@ public class DictTypeController {
 
     @ApiOperation("条件查询字典类型带分页")
     @PostMapping("list/{current}/{limit}")
-    public R pageDesignDataCondition(@PathVariable Long current, @PathVariable Long limit,
-                                     @RequestBody(required = false) TempQuery query) {
+    public R list(@PathVariable Long current, @PathVariable Long limit,
+                  @RequestBody(required = false) TempQuery query) {
         Page<DictType> MyPage = new Page<>(current, limit);
         //构建条件
         QueryWrapper<DictType> wrapper = new QueryWrapper<>();
@@ -67,25 +67,25 @@ public class DictTypeController {
 
     @ApiOperation("删除字典类型")
     @DeleteMapping("delete/{designDataId}")
-    public R removeDesignData(@PathVariable Collection<Serializable> designDataId) {
+    public R remove(@PathVariable Collection<Serializable> designDataId) {
         return dictTypeService.removeByIds(designDataId) ? R.ok() : R.error();
     }
 
     @ApiOperation("新增字典类型")
     @PostMapping("add")
-    public R addDesignData(@RequestBody DictType designData) {
+    public R add(@RequestBody DictType designData) {
         return dictTypeService.save(designData) ? R.ok() : R.error();
     }
 
     @ApiOperation(value = "根据字典类型id查询")
     @GetMapping("{id}")
-    public R getDesignDateById(@PathVariable Long id) {
+    public R getById(@PathVariable Long id) {
         return R.ok().data("DesignData",dictTypeService.getById(id));
     }
 
     @ApiOperation("修改字典类型")
     @PostMapping("updateDesignData")
-    public R updateDesignData(@RequestBody DictType designData) {
+    public R update(@RequestBody DictType designData) {
         return dictTypeService.updateById(designData)? R.ok(): R.error();
     }
 
