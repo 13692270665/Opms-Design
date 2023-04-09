@@ -9,17 +9,7 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>service_opms</artifactId>
-
-    <dependencies>
-        <dependency>
-            <groupId>com.ccd</groupId>
-            <artifactId>my_parent</artifactId>
-            <version>0.0.1-SNAPSHOT</version>
-            <scope>compile</scope>
-        </dependency>
-    </dependencies>
-
+    <artifactId>service_temp</artifactId>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

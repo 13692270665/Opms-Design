@@ -22,18 +22,6 @@ public class BaseEntity implements Serializable {
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Date updateTime;
 
-    @ApiModelProperty(value = "删除标志（0代表存在 1代表删除）")
-    @TableLogic
-    private Boolean delFlag;
-
-    public Boolean getDelFlag() {
-        return delFlag;
-    }
-
-    public void setDelFlag(Boolean delFlag) {
-        this.delFlag = delFlag;
-    }
-
     public Date getCreateTime() {
         return createTime;
     }

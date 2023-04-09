@@ -12,7 +12,6 @@ import org.springframework.context.annotation.Configuration;
  * @date : 2023/2/23 20:14 
  */
 @Configuration
-@MapperScan("com.ccd.opms.mapper")
 public class OpmsConfig {
 
     //逻辑删除插件

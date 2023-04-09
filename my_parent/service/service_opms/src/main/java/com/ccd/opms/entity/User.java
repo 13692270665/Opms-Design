@@ -5,6 +5,7 @@ import java.util.Date;
 import com.baomidou.mybatisplus.annotation.TableId;
 import java.io.Serializable;
 
+import com.baomidou.mybatisplus.annotation.TableLogic;
 import com.ccd.service_use.entity.BaseEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -43,5 +44,9 @@ public class User extends BaseEntity {
 
     @ApiModelProperty(value = "用户头像")
     private String avatar;
+
+    @ApiModelProperty(value = "删除标志（0代表存在 1代表删除）")
+    @TableLogic
+    private Boolean delFlag;
 
 }

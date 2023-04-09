@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
     <modules>
         <module>service_opms</module>
+        <module>service_temp</module>
     </modules>
 
     <dependencies>

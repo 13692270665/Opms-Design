@@ -76,4 +76,8 @@ public class OpmsDesignData extends BaseEntity {
     @ApiModelProperty(value = "创建人")
     private String createBy;
 
+    @ApiModelProperty(value = "删除标志（0代表存在 1代表删除）")
+    @TableLogic
+    private Boolean delFlag;
+
 }
