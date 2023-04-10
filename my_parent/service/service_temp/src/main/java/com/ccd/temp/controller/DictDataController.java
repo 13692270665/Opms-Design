@@ -78,6 +78,14 @@ public class DictDataController {
         return R.ok().data("dictData",dictDataService.getById(id));
     }
 
+    @ApiOperation(value = "根据字典类型查询")
+    @GetMapping("getByType/{type}")
+    public R getByType(@PathVariable String type) {
+        QueryWrapper<DictData> wrapper = new QueryWrapper<>();
+        wrapper.eq("dict_type", type);
+        return R.ok().data("dictDataList",dictDataService.list(wrapper));
+    }
+
     @ApiOperation("修改数据字典")
     @PostMapping("update")
     public R update(@RequestBody DictData dictData) {
