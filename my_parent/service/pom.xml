@@ -14,6 +14,7 @@
     <modules>
         <module>service_opms</module>
         <module>service_temp</module>
+        <module>service_kbms</module>
     </modules>
 
     <dependencies>
