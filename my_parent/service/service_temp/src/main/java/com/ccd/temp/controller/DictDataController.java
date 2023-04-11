@@ -4,9 +4,7 @@ package com.ccd.temp.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ccd.temp.entity.DictData;
-import com.ccd.temp.entity.DictType;
 import com.ccd.temp.entity.Vo.DictDataQuery;
-import com.ccd.temp.entity.Vo.TempQuery;
 import com.ccd.temp.service.DictDataService;
 import com.ccd.utils.R;
 import io.swagger.annotations.Api;
@@ -83,6 +81,7 @@ public class DictDataController {
     public R getByType(@PathVariable String type) {
         QueryWrapper<DictData> wrapper = new QueryWrapper<>();
         wrapper.eq("dict_type", type);
+        wrapper.orderByAsc("dict_sort");
         return R.ok().data("dictDataList",dictDataService.list(wrapper));
     }
 

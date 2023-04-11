@@ -28,7 +28,7 @@ import java.util.List;
 @CrossOrigin
 @Api(tags = "知识库管理-工艺工序库")
 @RestController
-@RequestMapping("/kbms/process-library")
+@RequestMapping("/kbms/process_library")
 public class ProcessLibraryController {
 
     @Autowired
