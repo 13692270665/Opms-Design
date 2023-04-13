@@ -34,4 +34,7 @@ public class ProceDesignQuery {
     @ApiModelProperty(value = "状态")
     private String status;
 
+    @ApiModelProperty(value = "流程模板名称")
+    private String templateName;
+
 }

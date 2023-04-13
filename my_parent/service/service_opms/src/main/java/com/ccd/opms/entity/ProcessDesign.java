@@ -62,13 +62,10 @@ public class ProcessDesign extends BaseEntity {
     @ApiModelProperty(value = "编制人")
     private String createBy;
 
-    @ApiModelProperty(value = "备注")
-    private String remark;
-
-    @ApiModelProperty(value = "计划号")
-    private String planId;
-
     // 额外属性
+
+    @ApiModelProperty(value = "流程模板名称")
+    private String templateName;
 
     @ApiModelProperty(value = "透镜左面")
     private String lensLeft;
@@ -76,5 +73,16 @@ public class ProcessDesign extends BaseEntity {
     @ApiModelProperty(value = "透镜右面")
     private String lensRight;
 
+    @ApiModelProperty(value = "零件类型")
+    private String partsType;
+
+    @ApiModelProperty(value = "零件名称")
+    private String partsName;
+
+    @ApiModelProperty(value = "材料牌号")
+    private String materialMark;
+
+    @ApiModelProperty(value = "备注")
+    private String remark;
 
 }
