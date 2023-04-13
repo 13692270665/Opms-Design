@@ -8,10 +8,23 @@
         SELECT
         *
         FROM
-        opms_process_design pd inner join opms_design_data dd
+        opms_process_design pd left join opms_design_data dd
         on
-        pd.design_data_id = dd.design_data_id
-        where ${ew.customSqlSegment}
+        pd.design_data_id = dd.design_data_id and dd.del_flag = 0
+        <where>
+            <if test="query.status != null  and query.status != ''"> and pd.status = #{query.status}</if>
+            <if test="query.createBy != null  and query.createBy != ''"> and pd.create_by like concat('%', #{query.createBy}, '%')</if>
+            <if test="query.lensLeft != null  and query.lensLeft != ''"> and dd.lens_left = #{query.lensLeft}</if>
+            <if test="query.lensRight != null  and query.lensRight != ''"> and dd.lens_right = #{query.lensRight}</if>
+            <if test="query.partsName != null and query.partsName != ''"> and dd.parts_name like concat('%', #{query.partsName}, '%')</if>
+            <if test="query.partsType != null "> and dd.parts_type = #{query.partsType}</if>
+            <if test="query.begin != null and begin != ''"><!-- 开始时间检索 -->
+                and date_format(pd.create_time,'%y%m%d') &gt;= date_format(#{query.beginTime},'%y%m%d')
+            </if>
+            <if test="query.end != null and end != ''"><!-- 结束时间检索 -->
+                and date_format(pd.create_time,'%y%m%d') &lt;= date_format(#{query.endTime},'%y%m%d')
+            </if>
+        </where>
 
     </select>
 

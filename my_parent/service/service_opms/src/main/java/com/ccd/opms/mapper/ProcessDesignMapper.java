@@ -6,6 +6,7 @@ import com.baomidou.mybatisplus.core.toolkit.Constants;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ccd.opms.entity.ProcessDesign;
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.ccd.opms.entity.vo.ProceDesignQuery;
 import org.apache.ibatis.annotations.Param;
 
 /**
@@ -18,5 +19,5 @@ import org.apache.ibatis.annotations.Param;
  */
 public interface ProcessDesignMapper extends BaseMapper<ProcessDesign> {
 
-    IPage<ProcessDesign> findPage(Page<ProcessDesign> myPage, @Param(Constants.WRAPPER) QueryWrapper<ProcessDesign> wrapper);
+    IPage<ProcessDesign> findPage(Page<ProcessDesign> myPage, ProceDesignQuery query);
 }

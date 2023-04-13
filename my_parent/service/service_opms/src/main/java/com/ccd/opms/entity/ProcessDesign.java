@@ -65,11 +65,16 @@ public class ProcessDesign extends BaseEntity {
     @ApiModelProperty(value = "备注")
     private String remark;
 
-    @ApiModelProperty(value = "删除标志（0代表存在 1代表删除）")
-    @TableLogic
-    private String delFlag;
-
+    @ApiModelProperty(value = "计划号")
     private String planId;
+
+    // 额外属性
+
+    @ApiModelProperty(value = "透镜左面")
+    private String lensLeft;
+
+    @ApiModelProperty(value = "透镜右面")
+    private String lensRight;
 
 
 }

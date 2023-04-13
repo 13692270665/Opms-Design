@@ -43,53 +43,10 @@ public class ProcessDesignController {
     @ApiOperation("查询工艺设计带分页")
     @PostMapping("list/{current}/{limit}")
     public R list(@PathVariable Long current, @PathVariable Long limit,
-                                     @RequestBody(required = false) ProceDesignQuery query) {
-        Page<ProcessDesign> MyPage = new Page<>(current, limit);
-        QueryWrapper<OpmsDesignData> ddWrapper = new QueryWrapper<>();
-        String partsType = query.getPartsType();
-        String partsName = query.getPartsName();
-        String lensLeft = query.getLensLeft();
-        String lensRight = query.getLensRight();
-        if (!StringUtils.isEmpty(partsType)) {
-            ddWrapper.eq("parts_type", partsType);
-        }
-        if (!StringUtils.isEmpty(partsName)) {
-            ddWrapper.eq("parts_name", partsName);
-        }
-        if (!StringUtils.isEmpty(lensLeft)) {
-            ddWrapper.eq("lens_left", lensLeft);
-        }
-        if (!StringUtils.isEmpty(lensRight)) {
-            ddWrapper.eq("lens_right", lensRight);
-        }
-        List<OpmsDesignData> ddid = designDataService.list(ddWrapper.select("design_data_id"));
-        Collection<Serializable> ids = new ArrayList<>();
-        for (OpmsDesignData opmsDesignData : ddid) {
-            ids.add(opmsDesignData.getDesignDataId());
-        }
-        QueryWrapper<ProcessDesign> wrapper = new QueryWrapper<>();
-        String status = query.getStatus();
-        String createBy = query.getCreateBy();
-        String begin = query.getBegin();
-        String end = query.getEnd();
-        if (!StringUtils.isEmpty(status)) {
-            wrapper.eq("status", status);
-        }
-        if (!StringUtils.isEmpty(createBy)) {
-            wrapper.eq("create_by", createBy);
-        }
-        if (!StringUtils.isEmpty(begin)) {
-            wrapper.ge("create_time", begin);
-        }
-        if (!StringUtils.isEmpty(end)) {
-            wrapper.le("create_time", end);
-        }
-        if(!ddid.isEmpty()){
-            wrapper.in("design_data_id",ids);
-        }
-        wrapper.orderByDesc("create_time");
-        processDesignService.page(MyPage, wrapper);
-        return R.ok().data("total",MyPage.getTotal()).data("rows",MyPage.getRecords());
+                        @RequestBody(required = false) ProceDesignQuery query){
+        Page<ProcessDesign> page = new Page<>(current,limit);
+        IPage<ProcessDesign> MyPage = processDesignService.findPage(page, query);
+        return R.ok().data("rows",MyPage.getRecords()).data("total",MyPage.getTotal());
     }
 
     @ApiOperation("逻辑删除工艺设计")

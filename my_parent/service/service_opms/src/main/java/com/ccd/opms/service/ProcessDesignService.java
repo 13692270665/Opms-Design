@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ccd.opms.entity.ProcessDesign;
 import com.baomidou.mybatisplus.extension.service.IService;
+import com.ccd.opms.entity.vo.ProceDesignQuery;
 
 /**
  * <p>
@@ -16,5 +17,5 @@ import com.baomidou.mybatisplus.extension.service.IService;
  */
 public interface ProcessDesignService extends IService<ProcessDesign> {
 
-    IPage<ProcessDesign> findPage(Page<ProcessDesign> myPage, QueryWrapper<ProcessDesign> wrapper);
+    IPage<ProcessDesign> findPage(Page<ProcessDesign> page, ProceDesignQuery query);
 }
