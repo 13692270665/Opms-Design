@@ -42,11 +42,15 @@ public class OpmsDesignDataController {
         QueryWrapper<OpmsDesignData> wrapper = new QueryWrapper<>();
         // 多条件组合查询
         String partsName = query.getPartsName();
+        String partsType = query.getPartsType();
         String createBy = query.getCreateBy();
         String begin = query.getBegin();
         String end = query.getEnd();
         if (!StringUtils.isEmpty(partsName)) {
             wrapper.eq("parts_name", partsName);
+        }
+        if (!StringUtils.isEmpty(partsType)) {
+            wrapper.eq("parts_type", partsType);
         }
         if (!StringUtils.isEmpty(createBy)) {
             wrapper.eq("create_by", createBy);
