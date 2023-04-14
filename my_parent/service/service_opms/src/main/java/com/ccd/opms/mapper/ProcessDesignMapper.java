@@ -24,4 +24,6 @@ public interface ProcessDesignMapper extends BaseMapper<ProcessDesign> {
     ProcessDesign getDetail(String id);
 
     Boolean updatePD(ProcessDesign processDesign);
+
+    Boolean check(String id, String status);
 }

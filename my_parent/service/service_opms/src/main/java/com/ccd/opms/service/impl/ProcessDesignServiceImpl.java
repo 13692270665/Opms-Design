@@ -35,4 +35,9 @@ public class ProcessDesignServiceImpl extends ServiceImpl<ProcessDesignMapper, P
     public Boolean updatePD(ProcessDesign processDesign) {
         return baseMapper.updatePD(processDesign);
     }
+
+    @Override
+    public Boolean check(String id,String status) {
+        return baseMapper.check(id,status);
+    }
 }

@@ -22,4 +22,6 @@ public interface ProcessDesignService extends IService<ProcessDesign> {
     ProcessDesign getDetail(String id);
 
     Boolean updatePD(ProcessDesign processDesign);
+
+    Boolean check(String id,String status);
 }

@@ -4,7 +4,9 @@ package com.ccd.opms.controller;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ccd.opms.entity.ProcessDesign;
 import com.ccd.opms.entity.ProcessDesignAudit;
+import com.ccd.opms.service.OpmsDesignDataService;
 import com.ccd.opms.service.ProcessDesignAuditService;
+import com.ccd.opms.service.ProcessDesignService;
 import com.ccd.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -27,8 +29,21 @@ public class ProcessDesignAuditController {
 
     @Autowired
     private ProcessDesignAuditService processDesignAuditService;
+    @Autowired
+    private ProcessDesignService processDesignService;
 
-    @ApiOperation(value = "根据工艺设计id进行查询")
+    @ApiOperation(value = "审核/校核成功或失败")
+    @PostMapping("checkSuccess")
+    public R checkSuccess(@RequestBody ProcessDesignAudit processDesignAudit) {
+        // 修改工艺设计的状态
+        String status = processDesignAudit.getStatus();
+        String id = processDesignAudit.getProcessDesignId();
+        processDesignService.check(id,status);
+        // 添加审核/校核记录
+        return processDesignAuditService.save(processDesignAudit) ? R.ok() : R.error();
+    }
+
+    @ApiOperation(value = "查询审核记录")
     @GetMapping("getById/{id}")
     public R getById(@PathVariable String id) {
         QueryWrapper<ProcessDesignAudit> wrapper = new QueryWrapper<>();

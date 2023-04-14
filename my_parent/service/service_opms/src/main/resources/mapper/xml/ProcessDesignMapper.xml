@@ -11,6 +11,13 @@
         </where>
     </update>
 
+    <update id="check">
+        update opms_process_design pd set pd.status = #{status}
+        <where>
+            pd.process_design_id = #{id}
+        </where>
+    </update>
+
 
     <select id="findPage" resultType="com.ccd.opms.entity.ProcessDesign">
 
