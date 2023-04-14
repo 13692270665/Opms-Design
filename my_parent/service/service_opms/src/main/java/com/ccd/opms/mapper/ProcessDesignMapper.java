@@ -22,4 +22,6 @@ public interface ProcessDesignMapper extends BaseMapper<ProcessDesign> {
     IPage<ProcessDesign> findPage(Page<ProcessDesign> myPage, ProceDesignQuery query);
 
     ProcessDesign getDetail(String id);
+
+    Boolean updatePD(ProcessDesign processDesign);
 }

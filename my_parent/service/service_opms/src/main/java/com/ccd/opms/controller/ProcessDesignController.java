@@ -56,6 +56,13 @@ public class ProcessDesignController {
         return R.ok().data("data",processDesign);
     }
 
+    @ApiOperation("修改工艺设计")
+    @PostMapping("update")
+    public R update(@RequestBody ProcessDesign processDesign) {
+        Boolean flag = processDesignService.updatePD(processDesign);
+        return flag? R.ok(): R.error();
+    }
+
     @ApiOperation("逻辑删除工艺设计")
     @DeleteMapping("del/{ids}")
     public R remove(@PathVariable Collection<Serializable> ids) {
@@ -66,12 +73,6 @@ public class ProcessDesignController {
     @PostMapping("add")
     public R add(@RequestBody ProcessDesign processDesign) {
         return processDesignService.save(processDesign) ? R.ok() : R.error();
-    }
-
-    @ApiOperation("修改工艺设计")
-    @PostMapping("update")
-    public R update(@RequestBody ProcessDesign processDesign) {
-        return processDesignService.updateById(processDesign)? R.ok(): R.error();
     }
 
 }

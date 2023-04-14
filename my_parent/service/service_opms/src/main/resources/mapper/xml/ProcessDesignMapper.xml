@@ -2,6 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ccd.opms.mapper.ProcessDesignMapper">
 
+    <update id="updatePD">
+        update opms_process_design pd
+        set pd.blank_size = #{blankSize},pd.model_id = #{modelId},pd.model_diameter = #{modelDiameter},
+            pd.model_number = #{modelNumber},pd.status = #{status}
+        <where>
+            pd.design_data_id = #{designDataId}
+        </where>
+    </update>
+
 
     <select id="findPage" resultType="com.ccd.opms.entity.ProcessDesign">
 

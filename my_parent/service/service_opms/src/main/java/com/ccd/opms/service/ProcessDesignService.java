@@ -20,4 +20,6 @@ public interface ProcessDesignService extends IService<ProcessDesign> {
     IPage<ProcessDesign> findPage(Page<ProcessDesign> page, ProceDesignQuery query);
 
     ProcessDesign getDetail(String id);
+
+    Boolean updatePD(ProcessDesign processDesign);
 }
