@@ -49,6 +49,13 @@ public class ProcessDesignController {
         return R.ok().data("rows",MyPage.getRecords()).data("total",MyPage.getTotal());
     }
 
+    @ApiOperation(value = "根据工艺设计id进行查询")
+    @GetMapping("getById/{id}")
+    public R getById(@PathVariable String id) {
+        ProcessDesign processDesign = processDesignService.getDetail(id);
+        return R.ok().data("data",processDesign);
+    }
+
     @ApiOperation("逻辑删除工艺设计")
     @DeleteMapping("del/{ids}")
     public R remove(@PathVariable Collection<Serializable> ids) {
@@ -59,12 +66,6 @@ public class ProcessDesignController {
     @PostMapping("add")
     public R add(@RequestBody ProcessDesign processDesign) {
         return processDesignService.save(processDesign) ? R.ok() : R.error();
-    }
-
-    @ApiOperation(value = "根据工艺设计id进行查询")
-    @GetMapping("getById/{id}")
-    public R getById(@PathVariable Long id) {
-        return R.ok().data("data",processDesignService.getById(id));
     }
 
     @ApiOperation("修改工艺设计")

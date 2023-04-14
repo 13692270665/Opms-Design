@@ -64,6 +64,12 @@ public class ProcessDesign extends BaseEntity {
 
     // 额外属性
 
+    @ApiModelProperty(value = "产品代号")
+    private String productId;
+
+    @ApiModelProperty(value = "零件编号")
+    private String partsId;
+
     @ApiModelProperty(value = "流程模板名称")
     private String templateName;
 
@@ -81,6 +87,9 @@ public class ProcessDesign extends BaseEntity {
 
     @ApiModelProperty(value = "材料牌号")
     private String materialMark;
+
+    @ApiModelProperty(value = "材料标准")
+    private String materialStandard;
 
     @ApiModelProperty(value = "备注")
     private String remark;

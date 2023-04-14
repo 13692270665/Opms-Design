@@ -25,4 +25,9 @@ public class ProcessDesignServiceImpl extends ServiceImpl<ProcessDesignMapper, P
     public IPage<ProcessDesign> findPage(Page<ProcessDesign> myPage, ProceDesignQuery query) {
         return baseMapper.findPage(myPage,query);
     }
+
+    @Override
+    public ProcessDesign getDetail(String id) {
+        return baseMapper.getDetail(id);
+    }
 }

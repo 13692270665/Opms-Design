@@ -30,5 +30,16 @@
         ORDER BY pd.create_time DESC
     </select>
 
+    <select id="getDetail" resultType="com.ccd.opms.entity.ProcessDesign">
+
+        SELECT * FROM opms_process_design pd left join opms_design_data dd
+        on pd.design_data_id = dd.design_data_id and dd.del_flag = 0
+        left JOIN temp_process_template pt ON pd.process_template_id = pt.process_template_id
+        <where>
+            pd.process_design_id = #{id}
+        </where>
+
+    </select>
+
 
 </mapper>

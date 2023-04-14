@@ -20,4 +20,6 @@ import org.apache.ibatis.annotations.Param;
 public interface ProcessDesignMapper extends BaseMapper<ProcessDesign> {
 
     IPage<ProcessDesign> findPage(Page<ProcessDesign> myPage, ProceDesignQuery query);
+
+    ProcessDesign getDetail(String id);
 }
