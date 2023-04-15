@@ -37,6 +37,12 @@ public class ProcessOutput implements Serializable {
     @ApiModelProperty(value = "计划号")
     private String planId;
 
+    @ApiModelProperty(value = "零件名称")
+    private String partsName;
+
+    @ApiModelProperty(value = "材料牌号")
+    private String materialMark;
+
     @ApiModelProperty(value = "生产数量")
     private Integer count;
 
@@ -49,6 +55,7 @@ public class ProcessOutput implements Serializable {
 
     @ApiModelProperty(value = "状态（0代表输出中 1代表归档）")
     private String outputStatus;
+
 
 
 }

@@ -10,7 +10,7 @@
         left join opms_design_data dd on pd.design_data_id = dd.design_data_id and dd.del_flag = 0
 
         <where>
-            <if test="query.outputStatus != null  and query.outputStatus != ''"> and po.outStatus = #{query.outStatus}</if>
+            <if test="query.outputStatus != null  and query.outputStatus != ''"> and po.output_status = #{query.outputStatus}</if>
             <if test="query.partsName != null and query.partsName != ''"> and dd.parts_name like concat('%', #{query.partsName}, '%')</if>
             <if test="query.planId != null  and query.planId != ''"> and po.plan_id = #{query.planId}</if>
         </where>
