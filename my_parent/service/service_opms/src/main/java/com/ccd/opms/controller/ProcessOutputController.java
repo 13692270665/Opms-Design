@@ -4,7 +4,7 @@ package com.ccd.opms.controller;
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.ccd.opms.entity.ProcessDesign;
-import com.ccd.opms.entity.vo.ProceDesignQuery;
+import com.ccd.opms.entity.ProcessOutput;
 import com.ccd.opms.entity.vo.ProceOutputQuery;
 import com.ccd.opms.service.ProcessOutputService;
 import com.ccd.utils.R;
@@ -34,8 +34,8 @@ public class ProcessOutputController {
     @PostMapping("list/{current}/{limit}")
     public R list(@PathVariable Long current, @PathVariable Long limit,
                   @RequestBody(required = false) ProceOutputQuery query){
-        Page<ProcessDesign> page = new Page<>(current,limit);
-        IPage<ProcessDesign> MyPage = processOutputService.findPage(page, query);
+        Page<ProcessOutput> page = new Page<>(current,limit);
+        IPage<ProcessOutput> MyPage = processOutputService.findPage(page, query);
         return R.ok().data("rows",MyPage.getRecords()).data("total",MyPage.getTotal());
     }
 

@@ -17,5 +17,5 @@ import com.ccd.opms.entity.vo.ProceOutputQuery;
  */
 public interface ProcessOutputMapper extends BaseMapper<ProcessOutput> {
 
-    IPage<ProcessDesign> findPage(Page<ProcessDesign> page, ProceOutputQuery query);
+    IPage<ProcessOutput> findPage(Page<ProcessOutput> page, ProceOutputQuery query);
 }

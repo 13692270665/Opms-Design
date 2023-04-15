@@ -22,7 +22,7 @@ import org.springframework.stereotype.Service;
 public class ProcessOutputServiceImpl extends ServiceImpl<ProcessOutputMapper, ProcessOutput> implements ProcessOutputService {
 
     @Override
-    public IPage<ProcessDesign> findPage(Page<ProcessDesign> page, ProceOutputQuery query) {
+    public IPage<ProcessOutput> findPage(Page<ProcessOutput> page, ProceOutputQuery query) {
         return baseMapper.findPage(page,query);
     }
 }
