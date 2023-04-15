@@ -31,9 +31,6 @@ public class OpmsDesignData extends BaseEntity {
     @TableId(value = "design_data_id", type = IdType.AUTO)
     private Long designDataId;
 
-    @ApiModelProperty(value = "模板编号")
-    private Long templateId;
-
     @ApiModelProperty(value = "产品代号")
     private String productId;
 

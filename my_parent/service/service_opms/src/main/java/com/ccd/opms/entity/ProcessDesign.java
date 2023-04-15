@@ -35,9 +35,6 @@ public class ProcessDesign extends BaseEntity {
     @TableId(value = "process_design_id", type = IdType.ID_WORKER_STR)
     private String processDesignId;
 
-    @ApiModelProperty(value = "设计资料模板编号")
-    private Long designDataTemplateId;
-
     @ApiModelProperty(value = "设计资料编号")
     private Long designDataId;
 
