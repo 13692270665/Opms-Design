@@ -13,6 +13,9 @@ public class KnowContentQuery {
     @ApiModelProperty(value = "标题")
     private String title;
 
+    @ApiModelProperty(value = "所属栏目")
+    private Long typeId;
+
     @ApiModelProperty(value = "作者")
     private String author;
 

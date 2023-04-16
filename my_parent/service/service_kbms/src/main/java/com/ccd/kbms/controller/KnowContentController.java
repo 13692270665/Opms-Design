@@ -40,8 +40,10 @@ public class KnowContentController {
         QueryWrapper<KnowContent> wrapper = new QueryWrapper<>();
         String author = query.getAuthor();
         String title = query.getTitle();
+        Long typeId = query.getTypeId();
         if (!StringUtils.isEmpty(author)) wrapper.eq("author", author);
         if (!StringUtils.isEmpty(title)) wrapper.eq("title", title);
+        if (!StringUtils.isEmpty(typeId)) wrapper.eq("type_id", typeId);
         wrapper.orderByDesc("create_time");
         knowContentService.page(page, wrapper);
         return R.ok().data("rows", page.getRecords()).data("total", page.getTotal());
