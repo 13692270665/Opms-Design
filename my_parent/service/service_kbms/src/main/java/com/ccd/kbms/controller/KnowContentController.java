@@ -13,8 +13,6 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 /**
  * <p>
  * 内容信息表 前端控制器
@@ -68,7 +66,7 @@ public class KnowContentController {
     }
 
     @ApiOperation("删除")
-    @DeleteMapping("delete")
+    @DeleteMapping("delete/{id}")
     public R delete(@PathVariable Long id){
         return knowContentService.removeById(id)?R.ok():R.error();
     }

@@ -3,16 +3,12 @@ package com.ccd.kbms.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.ccd.kbms.entity.KnowType;
-import com.ccd.kbms.entity.vo.lMQuery;
 import com.ccd.kbms.service.KnowTypeService;
 import com.ccd.utils.R;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
-import java.io.Serializable;
-import java.util.Collection;
 
 /**
  * <p>

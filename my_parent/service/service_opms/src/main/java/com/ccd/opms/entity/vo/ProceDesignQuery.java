@@ -1,5 +1,7 @@
 package com.ccd.opms.entity.vo;
 
+import com.baomidou.mybatisplus.annotation.IdType;
+import com.baomidou.mybatisplus.annotation.TableId;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
@@ -9,6 +11,9 @@ import lombok.Data;
  */
 @Data
 public class ProceDesignQuery {
+
+    @ApiModelProperty(value = "工艺设计ID")
+    private String processDesignId;
 
     @ApiModelProperty(value = "零件名称")
     private String partsName;

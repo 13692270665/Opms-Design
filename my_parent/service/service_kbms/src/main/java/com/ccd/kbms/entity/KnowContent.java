@@ -57,8 +57,7 @@ public class KnowContent implements Serializable {
     private String auditBy;
 
     @ApiModelProperty(value = "评审时间")
-    @TableField(fill = FieldFill.INSERT)
-    private Date auditTime;
+    private String auditTime;
 
 
 }

@@ -29,6 +29,7 @@
         pd.design_data_id = dd.design_data_id and dd.del_flag = 0
         left JOIN temp_process_template pt ON pd.process_template_id = pt.process_template_id
         <where>
+            <if test="query.processDesignId != null  and query.processDesignId != ''"> and pd.process_design_id = #{query.processDesignId}</if>
             <if test="query.status != null  and query.status != ''"> and pd.status = #{query.status}</if>
             <if test="query.createBy != null  and query.createBy != ''"> and pd.create_by like concat('%', #{query.createBy}, '%')</if>
             <if test="query.lensLeft != null  and query.lensLeft != ''"> and dd.lens_left = #{query.lensLeft}</if>
