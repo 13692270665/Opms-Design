@@ -18,4 +18,6 @@ import com.ccd.opms.entity.vo.ProceOutputQuery;
 public interface ProcessOutputService extends IService<ProcessOutput> {
 
     IPage<ProcessOutput> findPage(Page<ProcessOutput> page, ProceOutputQuery query);
+
+    Boolean updateStatus(Integer id, String status);
 }

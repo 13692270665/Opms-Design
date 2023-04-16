@@ -3,7 +3,6 @@ package com.ccd.opms.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
-import com.ccd.opms.entity.ProcessDesign;
 import com.ccd.opms.entity.ProcessOutput;
 import com.ccd.opms.entity.vo.ProceOutputQuery;
 import com.ccd.opms.service.ProcessOutputService;
@@ -12,6 +11,9 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+
+import java.io.Serializable;
+import java.util.Collection;
 
 /**
  * <p>
@@ -37,6 +39,15 @@ public class ProcessOutputController {
         Page<ProcessOutput> page = new Page<>(current,limit);
         IPage<ProcessOutput> MyPage = processOutputService.findPage(page, query);
         return R.ok().data("rows",MyPage.getRecords()).data("total",MyPage.getTotal());
+    }
+
+    @ApiOperation("归档/提回")
+    @PostMapping("updateStatus/{ids}/{status}")
+    public R updateStatus(@PathVariable Collection<Integer> ids,@PathVariable String status) {
+        for (Integer id : ids) {
+            processOutputService.updateStatus(id,status);
+        }
+        return R.ok();
     }
 
 }

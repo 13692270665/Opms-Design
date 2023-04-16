@@ -18,4 +18,6 @@ import com.ccd.opms.entity.vo.ProceOutputQuery;
 public interface ProcessOutputMapper extends BaseMapper<ProcessOutput> {
 
     IPage<ProcessOutput> findPage(Page<ProcessOutput> page, ProceOutputQuery query);
+
+    Boolean updateStatus(Integer id, String status);
 }

@@ -25,4 +25,9 @@ public class ProcessOutputServiceImpl extends ServiceImpl<ProcessOutputMapper, P
     public IPage<ProcessOutput> findPage(Page<ProcessOutput> page, ProceOutputQuery query) {
         return baseMapper.findPage(page,query);
     }
+
+    @Override
+    public Boolean updateStatus(Integer id, String status) {
+        return baseMapper.updateStatus(id,status);
+    }
 }

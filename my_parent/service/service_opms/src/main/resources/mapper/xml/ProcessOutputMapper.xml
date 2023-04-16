@@ -2,6 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ccd.opms.mapper.ProcessOutputMapper">
 
+    <update id="updateStatus">
+        update opms_process_output po set po.output_status = #{status}
+        <where>
+            po.process_output_record_id = #{id}
+        </where>
+    </update>
+
     <select id="findPage" resultType="com.ccd.opms.entity.ProcessOutput">
         SELECT
         *
