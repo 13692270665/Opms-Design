@@ -4,6 +4,8 @@ import com.ccd.opms.entity.User;
 import com.baomidou.mybatisplus.extension.service.IService;
 import com.ccd.opms.entity.vo.RegisterVo;
 
+import java.util.Map;
+
 /**
  * <p>
  * 会员表 服务类
@@ -17,4 +19,6 @@ public interface UserService extends IService<User> {
     String login(User user);
 
     void register(RegisterVo registerVo);
+
+    boolean send(Map<String, Object> param, String mobile);
 }
