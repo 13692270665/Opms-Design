@@ -20,6 +20,7 @@ public class AutoFillHandler implements MetaObjectHandler {
         //pojo属性名而非表列名
         this.setFieldValByName("createTime", new Date(), metaObject);
         this.setFieldValByName("updateTime", new Date(), metaObject);
+        this.setFieldValByName("outputTime", new Date(), metaObject);
     }
 
     //修改时执行

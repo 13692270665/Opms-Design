@@ -45,19 +45,15 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (StringUtils.isEmpty(mobile) || StringUtils.isEmpty(password)) {
             throw new CcdException(20001, "手机号或密码为空，登陆失败");
         }
-        //判断手机号是否正确
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("mobile", mobile);
         User moblieUser = baseMapper.selectOne(wrapper);
-        //判断查询对象是否为空
         if (moblieUser == null) {
             throw new CcdException(20001, "该用户不存在，登录失败");
         }
-        //判断密码(数据库中密码为加密形式，因此要将输入密码进行加密后再比较)
         if (!MD5.encrypt(password).equals(moblieUser.getPassword())) {
             throw new CcdException(20001, "密码错误，登陆失败");
         }
-        //登陆成功,生成token
         String token = JwtUtils.getJwtToken(moblieUser.getId(), moblieUser.getUsername());
         return token;
     }
@@ -69,17 +65,14 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         String mobile = registerVo.getMobile();
         String username = registerVo.getUsername();
         String password = registerVo.getPassword();
-        //非空判断
         if (StringUtils.isEmpty(mobile) || StringUtils.isEmpty(password)
                 || StringUtils.isEmpty(code) || StringUtils.isEmpty(username)) {
             throw new CcdException(20001, "注册信息不完整，注册失败");
         }
-        //判断验证码
         String redisCode = redisTemplate.opsForValue().get(mobile);
         if (!redisCode.equals(code)) {
             throw new CcdException(20001, "验证码错误，注册失败");
         }
-        //判断手机号是否重复
         QueryWrapper<User> wrapper = new QueryWrapper<>();
         wrapper.eq("mobile", mobile);
         Integer count = baseMapper.selectCount(wrapper);
@@ -100,7 +93,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
         if (StringUtils.isEmpty(mobile)) return false;
 
         DefaultProfile profile =
-                DefaultProfile.getProfile("default", "accseeKeyId", "secret");
+                DefaultProfile.getProfile("default");
         IAcsClient client = new DefaultAcsClient(profile);
 
         //设置相关固定的参数

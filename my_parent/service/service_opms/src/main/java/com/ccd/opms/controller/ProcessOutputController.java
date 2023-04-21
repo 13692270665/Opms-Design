@@ -3,6 +3,7 @@ package com.ccd.opms.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.ccd.opms.entity.OpmsDesignData;
 import com.ccd.opms.entity.ProcessOutput;
 import com.ccd.opms.entity.vo.ProceOutputQuery;
 import com.ccd.opms.service.ProcessOutputService;
@@ -48,6 +49,12 @@ public class ProcessOutputController {
             processOutputService.updateStatus(id,status);
         }
         return R.ok();
+    }
+
+    @ApiOperation("新增工艺输出记录")
+    @PostMapping("add")
+    public R add(@RequestBody ProcessOutput processOutput) {
+        return processOutputService.save(processOutput) ? R.ok() : R.error();
     }
 
 }
